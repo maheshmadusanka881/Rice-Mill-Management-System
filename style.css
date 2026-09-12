@@ -1,0 +1,351 @@
+/* --- Google Fonts & Core Variables --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-primary: #f1f5f9;       /* තවත් පැහැදිලි, ඇස්වලට පහසු Slate Grey පසුබිමක් */
+    --bg-sidebar: #1e293b;       /* Sidebar එකේ background එක (Slate Blue) */
+    --sidebar-hover: #334155;    /* Hover කරද්දී වැටෙන පාට */
+    --text-main: #0f172a;        /* අකුරු තවත් තදට පැහැදිලිව පෙනෙන්න හැදුවා */
+    --text-muted: #64748b;
+    --accent-blue: #3b82f6;
+    --accent-green: #38bdf8;     /* 'Rice Mill Pro' අකුරු සඳහා ලස්සන Sky Blue එකක් */
+    --accent-amber: #f59e0b;
+    --accent-red: #ef4444;
+    --card-bg: #ffffff;          /* Cards පිරිසිදු සුදු පාටින් කැපී පෙනෙයි */
+    --border-color: #e2e8f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    display: flex;
+}
+
+/* --- Sidebar Modern Styling --- */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 100%); /* Premium Gradient Blue look එකක් */
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 15px rgba(15, 23, 42, 0.08);
+}
+
+.sidebar h2 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 35px;
+    padding-left: 12px;
+    color: #38bdf8; /* Bright Sky Blue */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 6px;
+}
+
+.sidebar ul li a {
+    color: #e2e8f0; /* වඩාත් පැහැදිලි ලා අළු පැහැති අකුරු */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 16px;
+    display: block;
+    border-radius: 10px; /* තව ටිකක් රවුම් කරා */
+    transition: all 0.25s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.12); /* Hover කරද්දී ලස්සන Glass effect එකක් */
+    color: #fff;
+    padding-left: 22px; /* Hover කරද්දී active වෙන බව පේන්න පොඩ්ඩක් ඉස්සරහට එනවා */
+}
+
+/* --- Main Content Layout --- */
+.main-content {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    min-height: 100vh;
+    padding: 40px;
+    background-color: var(--bg-primary);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    padding-bottom: 20px;
+}
+
+header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+header span {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* --- Dashboard Modern Cards (Upgraded) --- */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: 16px; /* තව ටිකක් modern වෙන්න රවුම් කරා */
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 130px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+}
+
+/* Card එක උඩට mouse එක ගෙනිද්දි වෙන සුපිරි වෙනස */
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    border-color: #cbd5e1;
+}
+
+/* හැම card එකකම වම් පැත්තෙන් වැටෙන ලස්සන indicator line එක */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+}
+
+/* විවිධ Cards වලට වෙනස්ම වර්ණ දීම */
+.card-paddy::before { background-color: var(--accent-amber); }
+.card-milling::before { background-color: var(--accent-blue); }
+.card-rice::before { background-color: #8b5cf6; } /* Purple for Rice Stock */
+.card-sales::before { background-color: var(--accent-green); }
+
+.card h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin: 0;
+}
+
+.card .card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 12px;
+}
+
+.card .value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: -1px;
+}
+
+/* CSS වලින්ම හදන ලස්සන Flat Icons */
+.card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card-paddy .card-icon { background: #fef3c7; color: #d97706; }
+.card-milling .card-icon { background: #dbeafe; color: #2563eb; }
+.card-rice .card-icon { background: #f3e8ff; color: #7c3aed; }
+.card-sales .card-icon { background: #d1fae5; color: #059669; }
+
+/* --- Modern Forms Styling --- */
+.form-container, .table-container, .report-box {
+    background: var(--card-bg);
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 32px;
+    border: 1px solid var(--border-color);
+}
+
+.form-container h3, .table-container h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--text-muted);
+}
+
+.form-group input, .form-group select {
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #fff;
+    color: var(--text-main);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* --- Buttons Styling --- */
+.btn-submit {
+    background-color: var(--accent-blue);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 20px;
+    transition: background 0.2s;
+}
+
+.btn-submit:hover { background-color: #2563eb; }
+
+.btn-complete {
+    background-color: var(--accent-green);
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+}
+.btn-complete:hover { background-color: #059669; }
+
+/* --- Tables Styling --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+th {
+    background-color: #f8fafc;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 14px 16px;
+    border-bottom: 2px solid var(--border-color);
+    text-align: left;
+}
+
+td {
+    padding: 16px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+tr:hover td {
+    background-color: #f8fafc;
+}
+
+/* --- Badges & Statuses --- */
+.badge {
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.badge-process { background: #fef3c7; color: #d97706; }
+.badge-complete { background: #d1fae5; color: #059669; }
+
+
+
+/* Table එක අඳුරු තීම් එකට ගැළපෙන්න */
+.table-container {
+    background: #1e293b !important; /* Dark background */
+    border: 1px solid #334155 !important;
+    padding: 24px;
+    border-radius: 12px;
+}
+
+table {
+    width: 100%;
+    color: #f1f5f9; /* අකුරු සුදු පාටයි */
+}
+
+th {
+    color: #94a3b8; /* මාතෘකා ලා අළු පාටයි */
+}
+
+td {
+    border-bottom: 1px solid #334155 !important;
+}
+
+/* Input box එකේ පාට */
+.input-price {
+    background: #0f172a !important;
+    color: white !important;
+    border: 1px solid #475569 !important;
+}
+
+/* Sidebar Active state එක එකම පාටකට තියාගන්න */
+.sidebar ul li a.active {
+    background-color: #1e3a8a !important; /* මේ නිල් පාට තමයි Dashboard එකේ තියෙන්නේ */
+    color: #ffffff !important;
+    border-radius: 10px;
+}
