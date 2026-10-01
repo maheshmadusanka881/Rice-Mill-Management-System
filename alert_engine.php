@@ -17,8 +17,8 @@ while($row = $result->fetch_assoc()) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'bandaramahesh278@gmail.com'; 
-        $mail->Password = 'cygu nzuj zqxt xexn'; 
+        $mail->Username = '@gmail.com'; 
+        $mail->Password = ''; 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
@@ -32,7 +32,7 @@ while($row = $result->fetch_assoc()) {
         );
 
         $mail->setFrom('minsada@system.com', 'Minsada Rice Mill');
-        $mail->addAddress('bandaramahesh278@gmail.com'); // මෙතනට ඔයාට Alert එක එන්න ඕන ඊමේල් එක දාන්න
+        $mail->addAddress('@gmail.com'); // මෙතනට ඔයාට Alert එක එන්න ඕන ඊමේල් එක දාන්න
 
         $mail->isHTML(true);
         $mail->Subject = 'Stock Alert: ' . $row['rice_type'];
